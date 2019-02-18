@@ -17,8 +17,9 @@ public class BlackjackDemo {
         drawnCard = dealer.getDeck().drawFromDeck();
         dealerHand.addCardToHand(drawnCard);
         System.out.println(dealerHand.getCards());
-        System.out.println(dealerHand.getTotalCards());
+       // System.out.println(dealerHand.getTotalCards());
         System.out.println(dealer.getDeck().getTotalCards());
+        dealerHand.checkFor21();
 
     }
 }
