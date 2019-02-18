@@ -1,5 +1,4 @@
 import java.util.Collections;
-import java.util.Random;
 import java.util.ArrayList;
 
 
@@ -22,11 +21,17 @@ public class Deck {
         return cards.remove(0);
     }
 
+
+
     public int getTotalCards() {
         return cards.size();
     }
 
+
+
     public ArrayList<Card> getCards() {
         return cards;
     }
+
+
 }
