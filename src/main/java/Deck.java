@@ -16,7 +16,7 @@ public class Deck {
     }
 
     public Card drawFromDeck() {
-        Random generator = new Random()
+        Random generator = new Random();
         int index = generator.nextInt(cards.size());
         return cards.remove(index);
     }
