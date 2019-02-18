@@ -10,7 +10,7 @@ public class Hand extends Deck {
         handToPlay = new ArrayList<>();
     }
 
-    public int checkFor21() {
+    public int addValuesOfCardsInHand() {
         int sum = 0;
         for (int i = 0; i < handToPlay.size(); i++) {
            if (handToPlay.get(i).getRank() >= 1 && handToPlay.get(i).getRank() < 9) {
@@ -28,6 +28,18 @@ public class Hand extends Deck {
            }
         }
         return sum;
+    }
+
+    public String checkFor21(int total){
+        String result = "";
+        if(total < 21){
+            result =  "Would you like to hit?";
+        } else if (total > 21){
+            result =  "You busted.";
+        } else if ( total == 21){
+            result =  "You win.";
+        }
+        return result;
     }
 
     public void addCardToHand(Card card) {
