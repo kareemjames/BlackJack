@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -13,15 +14,19 @@ public class Deck {
                 cards.add(new Card(a, b));
             }
         }
+        Collections.shuffle(cards);
     }
 
+
     public Card drawFromDeck() {
-        Random generator = new Random();
-        int index = generator.nextInt(cards.size());
-        return cards.remove(index);
+        return cards.remove(0);
     }
 
     public int getTotalCards() {
         return cards.size();
+    }
+
+    public ArrayList<Card> getCards() {
+        return cards;
     }
 }
