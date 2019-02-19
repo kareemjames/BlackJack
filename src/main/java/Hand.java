@@ -47,19 +47,20 @@ public class Hand extends Deck {
         return result;
     }
 
-    public int dealerCheckFor21(int total){
+    public void dealerCheckFor21(int total) {
+        int sum = total;
 
-        if(total < 17){
-            handToPlay.add(drawFromDeck());
-            System.out.println(handToPlay);
-             valueReturnedFromDealerCheckFor21 = addValuesOfCardsInHand();
-
-        } else if(total >= 17 && total <= 20){
-            System.out.println("Dealer stays.");
-        } else {
-            System.out.println("Dealer busts.");
+        for (int i = 0; i < handToPlay.size(); i++) {
+            if (sum < 17) {
+                handToPlay.add(drawFromDeck());
+                System.out.println(handToPlay);
+                sum += addValuesOfCardsInHand();
+            } else if (total >= 17 && total <= 20) {
+                System.out.println("Dealer stays.");
+            } else {
+                System.out.println("Dealer busts.");
+            }
         }
-        return valueReturnedFromDealerCheckFor21;
     }
 
     public void showDealerTopCard(){
