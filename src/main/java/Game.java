@@ -52,10 +52,10 @@ public class Game {
                     playerResult =  playerHand.checkFor21(playerTotal);
 
 
+
                     switch(playerResult){
-                        case  "Would you like to hit?\n" +
-                                "Y\n" +
-                                "N":
+                        case  "hit":
+                            System.out.println("Would you like a hit?");
                             userInput = sc.nextLine();
                             if(userInput.equalsIgnoreCase("y")){
 

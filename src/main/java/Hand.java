@@ -38,11 +38,13 @@ public class Hand extends Deck {
     public String checkFor21(int total) {
         String result = "";
         if (total < 21) {
-            result = "Would you like to hit?";
+            result = "hit";
         } else if (total > 21) {
-            result = "You busted.";
+            result = "bust";
+            System.out.println("You've busted.");
         } else if (total == 21) {
-            result = "You win.";
+            result = "win";
+            System.out.println("You've won!");
         }
         return result;
     }
@@ -52,13 +54,19 @@ public class Hand extends Deck {
 
         for (int i = 0; i < handToPlay.size(); i++) {
             if (sum < 17) {
+                System.out.println(handToPlay);
                 handToPlay.add(drawFromDeck());
                 System.out.println(handToPlay);
                 sum += addValuesOfCardsInHand();
-            } else if (total >= 17 && total <= 20) {
+            }
+            if (sum >= 17 && sum <= 20) {
+                System.out.println(handToPlay);
                 System.out.println("Dealer stays.");
-            } else {
+            }
+            if(sum > 21){
+                System.out.println(handToPlay);
                 System.out.println("Dealer busts.");
+
             }
         }
     }
@@ -81,6 +89,10 @@ public class Hand extends Deck {
         return handToPlay;
     }
 
+    public void declareWinner(int dealerTotal, int playerTotal){
+       String result = (dealerTotal > playerTotal) ? "dealer wins" : "player wins ";
+        System.out.println(result);
+    }
 }
 
 
