@@ -25,6 +25,7 @@ public class Game {
                 case 1:
                     break;
                 case 2:
+                    System.exit(0);
                     break;
                 default:
                     break;
