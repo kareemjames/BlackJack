@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Hand extends Deck {
 
     private ArrayList<Card> handToPlay;
+    private int valueReturnedFromDealerCheckFor21;
 
 
     Hand() {
@@ -44,6 +45,25 @@ public class Hand extends Deck {
             result = "You win.";
         }
         return result;
+    }
+
+    public int dealerCheckFor21(int total){
+
+        if(total < 17){
+            handToPlay.add(drawFromDeck());
+            System.out.println(handToPlay);
+             valueReturnedFromDealerCheckFor21 = addValuesOfCardsInHand();
+
+        } else if(total >= 17 && total <= 20){
+            System.out.println("Dealer stays.");
+        } else {
+            System.out.println("Dealer busts.");
+        }
+        return valueReturnedFromDealerCheckFor21;
+    }
+
+    public void showDealerTopCard(){
+        System.out.println("The dealer is showing: " + handToPlay.get(1));
     }
 
     public void addCardToHand(Card card){
