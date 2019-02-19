@@ -9,17 +9,8 @@ public class BlackjackDemo {
 ;
         Dealer dealer = new Dealer(deck);
 
-        //System.out.println(dealer.getDeck().drawFromDeck());
-        drawnCard = dealer.getDeck().drawFromDeck();
-        System.out.println(drawnCard);
-        dealerHand.addCardToHand(drawnCard);
-        System.out.println(dealerHand.getCards());
-        drawnCard = dealer.getDeck().drawFromDeck();
-        dealerHand.addCardToHand(drawnCard);
-        System.out.println(dealerHand.getCards());
-       // System.out.println(dealerHand.getTotalCards());
-        System.out.println(dealer.getDeck().getTotalCards());
-        dealerHand.addValuesOfCardsInHand();
+
+
 
     }
 }
