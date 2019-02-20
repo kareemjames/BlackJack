@@ -32,14 +32,18 @@ public class Hand extends Deck {
 
     public int checkForAceCards(int sumBeforeAceCheck) {
         int sum = sumBeforeAceCheck;
+        int counter = 0;
         for (int i = 0; i < handToPlay.size(); i++) {
-            if (handToPlay.get(i).getRank() == 0 && sum < 11) {
-                sum += 11;
-            }
-                if(handToPlay.get(i).getRank() == 0 && sum > 11){
+            if (handToPlay.get(i).getRank() == 0) {
                 sum += 1;
+                counter++;
             }
         }
+
+        if (sum < 12 ) {
+            sum += 10;
+        }
+
         return sum;
     }
 

@@ -14,8 +14,8 @@ public class HandTest {
         hand = new Hand();
        // Card aceCard = new Card(2,0);
         //Card aceCard2 = new Card(3,0);
-        Card numCard4 = new Card( 1,  3);
-        Card faceCard = new Card(3, 12);
+        Card numCard4 = new Card( 1,  0);
+        Card faceCard = new Card(3, 0);
       //  hand.addCardToHand(aceCard);
       //  hand.addCardToHand(aceCard2);
         hand.addCardToHand(numCard4);
@@ -45,6 +45,8 @@ public class HandTest {
 
     @Test
     public void shouldAddOneToSumAfterCheckingForAce(){
-
+        int expected = 18;
+        int resultOfMethodCall = hand.checkForAceCards(6);
+        assertThat(resultOfMethodCall, equalTo(expected));
     }
 }
