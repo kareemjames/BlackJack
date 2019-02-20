@@ -34,7 +34,6 @@ public class Hand extends Deck {
     }
 
 
-
     public String checkFor21(int total) {
         String result = "";
         if (total < 21) {
@@ -51,31 +50,32 @@ public class Hand extends Deck {
 
     public void dealerCheckFor21(int total) {
         int sum = total;
+        System.out.println(sum);
 
-        for (int i = 0; i < handToPlay.size(); i++) {
-            if (sum < 17) {
-                System.out.println(handToPlay);
-                handToPlay.add(drawFromDeck());
-                System.out.println(handToPlay);
-                sum += addValuesOfCardsInHand();
-            }
-            if (sum >= 17 && sum <= 20) {
-                System.out.println(handToPlay);
-                System.out.println("Dealer stays.");
-            }
-            if(sum > 21){
-                System.out.println(handToPlay);
-                System.out.println("Dealer busts.");
+        while(sum < 17){
+            System.out.println(handToPlay);
+            handToPlay.add(drawFromDeck());
+            System.out.println(handToPlay);
+            sum = addValuesOfCardsInHand();
+            System.out.println(sum);
+        }
 
-            }
+        if (sum >= 17 && sum <= 20) {
+            System.out.println(handToPlay);
+            System.out.println("Dealer stays.");
+        }
+
+        if (sum > 21) {
+            System.out.println(handToPlay);
+            System.out.println("Dealer busts.");
         }
     }
 
-    public void showDealerTopCard(){
+    public void showDealerTopCard() {
         System.out.println("The dealer is showing: " + handToPlay.get(1));
     }
 
-    public void addCardToHand(Card card){
+    public void addCardToHand(Card card) {
         handToPlay.add(card);
     }
 
@@ -89,8 +89,8 @@ public class Hand extends Deck {
         return handToPlay;
     }
 
-    public void declareWinner(int dealerTotal, int playerTotal){
-       String result = (dealerTotal > playerTotal) ? "dealer wins" : "player wins ";
+    public void declareWinner(int dealerTotal, int playerTotal) {
+        String result = (dealerTotal > playerTotal) ? "dealer wins" : "player wins ";
         System.out.println(result);
     }
 }
