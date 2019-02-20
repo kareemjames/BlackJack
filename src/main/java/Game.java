@@ -7,7 +7,8 @@ public class Game {
     Hand playerHand = new Hand();
     Card drawnCard;
     Dealer dealer = new Dealer(deck);
-    boolean isPlaying = false;
+    boolean isHitting = true;
+    boolean isPlaying = true;
     Scanner sc = new Scanner(System.in);
     int userInputInt;
     String userInput;
@@ -17,6 +18,8 @@ public class Game {
     int dealerTotalAfterAceCheck;
     String playerResult;
     String dealerResult;
+    int dealerSum;
+
 
 
     public void startGame(){
@@ -56,35 +59,37 @@ public class Game {
                     playerResult =  playerHand.checkFor21(playerTotalAfterAceCheck);
 
 
-
                     switch(playerResult){
                         case  "hit":
-                            System.out.println("Would you like a hit?");
-                            userInput = sc.nextLine();
-                            if(userInput.equalsIgnoreCase("y")){
+                            do {
+                                System.out.println("Would you like to hit[y] or stand[n]?");
+                                userInput = sc.nextLine();
+                                if(userInput.equalsIgnoreCase("y")) {
 
+                                    drawnCard = dealer.getDeck().drawFromDeck();
+                                    playerHand.addCardToHand(drawnCard);
 
-                                drawnCard = dealer.getDeck().drawFromDeck();
-                                playerHand.addCardToHand(drawnCard);
+                                    System.out.println("Your new hand is: " + playerHand.getCards());
+                                    playerTotal = playerHand.addValuesOfCardsInHandWithoutAceCards();
+                                    playerTotalAfterAceCheck = playerHand.checkForAceCards(playerTotal);
+                                    playerResult = playerHand.checkFor21(playerTotalAfterAceCheck);
+                                    System.out.println("Your hand's total is: " + playerTotalAfterAceCheck);
+                                }
+                                else if (playerTotalAfterAceCheck >= 21) {
+                                        isHitting = false;
+                                    }
 
-                                System.out.println("Your new hand is: " + playerHand.getCards());
-                                playerTotal = playerHand.addValuesOfCardsInHandWithoutAceCards();
-                                playerTotalAfterAceCheck = playerHand.checkForAceCards(playerTotal);
+                                    while (isHitting = false) {
 
-                                playerHand.checkFor21(playerTotalAfterAceCheck);
-                                dealerHand.declareWinner(dealerTotalAfterAceCheck, playerTotalAfterAceCheck);
+                                        dealerHand.getCards();
+                                        dealerTotal = dealerHand.addValuesOfCardsInHandWithoutAceCards();
+                                        dealerTotalAfterAceCheck = dealerHand.checkForAceCards(dealerTotal);
+                                        System.out.println("The dealers hand's total is: " + dealerTotalAfterAceCheck);
+                                        dealerSum = dealerHand.dealerCheckFor21(dealerTotalAfterAceCheck);
+                                    }
+                            } while(isHitting);
 
-
-                        } else if(userInput.equalsIgnoreCase("n")){
-
-                                dealerHand.getCards();
-                                dealerTotal = dealerHand.addValuesOfCardsInHandWithoutAceCards();
-                                dealerTotalAfterAceCheck  = dealerHand.checkForAceCards(dealerTotal);
-                                System.out.println("The dealers hand's total is: " + dealerTotalAfterAceCheck);
-                                int dealerSum = dealerHand.dealerCheckFor21(dealerTotalAfterAceCheck);
-                                dealerHand.declareWinner(dealerSum, playerTotalAfterAceCheck);
-
-                            }
+                          //  dealerHand.declareWinner(dealerSum, playerTotalAfterAceCheck);
                     }
 
 

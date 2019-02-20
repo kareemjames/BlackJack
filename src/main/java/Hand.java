@@ -1,9 +1,12 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Hand extends Deck {
 
     private ArrayList<Card> handToPlay;
     private int valueReturnedFromDealerCheckFor21;
+    private Scanner scan = new Scanner(System.in);
+    private String userInput;
 
 
     Hand() {
@@ -38,10 +41,6 @@ public class Hand extends Deck {
         }
         return sum;
     }
-
-
-
-
 
     public String checkFor21(int total) {
         String result = "";
