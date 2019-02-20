@@ -96,7 +96,10 @@ public class Game {
 
                                 dealerSum = dealerHand.dealerCheckFor21(dealerTotalAfterAceCheck);
                                 dealerHand.declareWinner(dealerSum, playerTotalAfterAceCheck);
+
                             }
+                            playerHand.clearHand();
+                            dealerHand.clearHand();
                     }
 
 

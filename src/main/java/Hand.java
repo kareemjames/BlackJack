@@ -114,6 +114,10 @@ public class Hand extends Deck {
             System.out.println("It's a draw.");
         }
     }
+
+    public void clearHand() {
+        handToPlay.clear();
+    }
 }
 
 
