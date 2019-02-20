@@ -2,23 +2,23 @@ import java.util.Scanner;
 
 public class Game {
 
-    Deck deck = new Deck();
-    Hand dealerHand = new Hand();
-    Hand playerHand = new Hand();
-    Card drawnCard;
-    Dealer dealer = new Dealer(deck);
-    boolean isHitting = true;
-    boolean isPlaying = true;
-    Scanner sc = new Scanner(System.in);
-    int userInputInt;
-    String userInput;
-    int dealerTotal;
-    int playerTotal;
-    int playerTotalAfterAceCheck;
-    int dealerTotalAfterAceCheck;
-    String playerResult;
-    String dealerResult;
-    int dealerSum;
+    private Deck deck = new Deck();
+    private Hand dealerHand = new Hand();
+    private Hand playerHand = new Hand();
+    private Card drawnCard;
+    private Dealer dealer = new Dealer(deck);
+    private boolean isHitting = false;
+    private boolean isPlaying = true;
+    private Scanner sc = new Scanner(System.in);
+    private int userInputInt;
+    private String userInput;
+    private int dealerTotal;
+    private int playerTotal;
+    private int playerTotalAfterAceCheck;
+    private int dealerTotalAfterAceCheck;
+    private String playerResult;
+    private String dealerResult;
+    private int dealerSum;
 
 
 
@@ -62,6 +62,7 @@ public class Game {
                     switch(playerResult) {
                         case "hit":
                             do {
+                                isHitting = true;
                                 System.out.println("Would you like to hit[y] or stand[n]?");
                                 userInput = sc.nextLine();
                                 if (userInput.equalsIgnoreCase("y")) {
@@ -70,11 +71,14 @@ public class Game {
                                     playerHand.addCardToHand(drawnCard);
 
                                     System.out.println("Your new hand is: " + playerHand.getCards());
+
                                     playerTotal = playerHand.addValuesOfCardsInHandWithoutAceCards();
                                     playerTotalAfterAceCheck = playerHand.checkForAceCards(playerTotal);
                                     playerResult = playerHand.checkFor21(playerTotalAfterAceCheck);
                                     System.out.println("Your hand's total is: " + playerTotalAfterAceCheck);
-                                } else if(userInput.equalsIgnoreCase("n")){
+                                }
+
+                                if (userInput.equalsIgnoreCase("n")){
                                     isHitting = false;
                                 }
 
@@ -98,10 +102,10 @@ public class Game {
                                 dealerHand.declareWinner(dealerSum, playerTotalAfterAceCheck);
 
                             }
-                            playerHand.clearHand();
-                            dealerHand.clearHand();
                     }
 
+                           playerHand.clearHand();
+                           dealerHand.clearHand();
 
 
 

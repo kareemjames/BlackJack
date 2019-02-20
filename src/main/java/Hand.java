@@ -38,10 +38,10 @@ public class Hand extends Deck {
                 sum += 1;
                 counter++;
             }
-        }
 
-        if (sum < 12 ) {
-            sum += 10;
+            if (sum < 12 && counter > 1) {
+                sum += 10;
+            }
         }
 
         return sum;
