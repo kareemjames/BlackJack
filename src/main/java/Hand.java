@@ -65,6 +65,11 @@ public class Hand extends Deck {
             System.out.println("Dealer stays.");
         }
 
+        if (sum == 21) {
+            System.out.println(handToPlay);
+            System.out.println("Dealer has 21.");
+        }
+
         if (sum > 21) {
             System.out.println(handToPlay);
             System.out.println("Dealer busts.");
