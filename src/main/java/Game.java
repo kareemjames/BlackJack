@@ -59,12 +59,12 @@ public class Game {
                     playerResult =  playerHand.checkFor21(playerTotalAfterAceCheck);
 
 
-                    switch(playerResult){
-                        case  "hit":
+                    switch(playerResult) {
+                        case "hit":
                             do {
                                 System.out.println("Would you like to hit[y] or stand[n]?");
                                 userInput = sc.nextLine();
-                                if(userInput.equalsIgnoreCase("y")) {
+                                if (userInput.equalsIgnoreCase("y")) {
 
                                     drawnCard = dealer.getDeck().drawFromDeck();
                                     playerHand.addCardToHand(drawnCard);
@@ -74,24 +74,30 @@ public class Game {
                                     playerTotalAfterAceCheck = playerHand.checkForAceCards(playerTotal);
                                     playerResult = playerHand.checkFor21(playerTotalAfterAceCheck);
                                     System.out.println("Your hand's total is: " + playerTotalAfterAceCheck);
+                                } else if(userInput.equalsIgnoreCase("n")){
+                                    isHitting = false;
                                 }
-                                else if (playerTotalAfterAceCheck >= 21) {
-                                        isHitting = false;
-                                    }
 
-                                    while (isHitting = false) {
+                                if (playerTotalAfterAceCheck > 21) {
+                                    isHitting = false;
+                                } else if(playerTotalAfterAceCheck == 21){
+                                    isHitting = false;
+                                }
 
-                                        dealerHand.getCards();
-                                        dealerTotal = dealerHand.addValuesOfCardsInHandWithoutAceCards();
-                                        dealerTotalAfterAceCheck = dealerHand.checkForAceCards(dealerTotal);
-                                        System.out.println("The dealers hand's total is: " + dealerTotalAfterAceCheck);
-                                        dealerSum = dealerHand.dealerCheckFor21(dealerTotalAfterAceCheck);
-                                    }
-                            } while(isHitting);
 
-                          //  dealerHand.declareWinner(dealerSum, playerTotalAfterAceCheck);
+                            } while (isHitting);
+
+
+                            if (playerTotalAfterAceCheck <= 21) {
+                                dealerHand.getCards();
+                                dealerTotal = dealerHand.addValuesOfCardsInHandWithoutAceCards();
+                                dealerTotalAfterAceCheck = dealerHand.checkForAceCards(dealerTotal);
+                                System.out.println("The dealers hand's total is: " + dealerTotalAfterAceCheck);
+
+                                dealerSum = dealerHand.dealerCheckFor21(dealerTotalAfterAceCheck);
+                                dealerHand.declareWinner(dealerSum, playerTotalAfterAceCheck);
+                            }
                     }
-
 
 
 

@@ -35,7 +35,8 @@ public class Hand extends Deck {
         for (int i = 0; i < handToPlay.size(); i++) {
             if (handToPlay.get(i).getRank() == 0 && sum < 11) {
                 sum += 11;
-            } else if(handToPlay.get(i).getRank() == 0 && sum > 11){
+            }
+                if(handToPlay.get(i).getRank() == 0 && sum > 11){
                 sum += 1;
             }
         }

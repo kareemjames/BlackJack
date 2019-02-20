@@ -42,4 +42,9 @@ public class HandTest {
 
 
     }
+
+    @Test
+    public void shouldAddOneToSumAfterCheckingForAce(){
+
+    }
 }
