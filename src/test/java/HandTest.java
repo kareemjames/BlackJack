@@ -1,8 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static org.hamcrest.core.IsEqual.equalTo;
 
 import static org.junit.Assert.*;
@@ -28,7 +26,7 @@ public class HandTest {
 
     @Test
     public void shouldAddValuesOfCardsInHand() {
-        int resultOfMethodCall = hand.addValuesOfCardsInHand();
+        int resultOfMethodCall = hand.addValuesOfCardsInHandWithoutAceCards();
         int expected = 12;
         assertThat(resultOfMethodCall, equalTo(expected));
 

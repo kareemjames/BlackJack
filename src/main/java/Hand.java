@@ -11,7 +11,7 @@ public class Hand extends Deck {
         handToPlay = new ArrayList<>();
     }
 
-    public int addValuesOfCardsInHand() {
+    public int addValuesOfCardsInHandWithoutAceCards() {
         int sum = 0;
         for (int i = 0; i < handToPlay.size(); i++) {
             if (handToPlay.get(i).getRank() >= 1 && handToPlay.get(i).getRank() < 9) {
@@ -20,18 +20,27 @@ public class Hand extends Deck {
             } else if (handToPlay.get(i).getRank() >= 9 && handToPlay.get(i).getRank() <= 12) {
                 sum += 10;
                 //  System.out.println(sum);
-            } else if (handToPlay.get(i).getRank() == 0) {
-                if (sum < 11) {
-                    sum += 11;
-                } else {
-                    sum += 1;
-                }
             }
         }
         return sum;
 
 
     }
+
+    public int checkForAceCards(int sumBeforeAceCheck) {
+        int sum = sumBeforeAceCheck;
+        for (int i = 0; i < handToPlay.size(); i++) {
+            if (handToPlay.get(i).getRank() == 0 && sum < 11) {
+                sum += 11;
+            } else if(handToPlay.get(i).getRank() == 0 && sum > 11){
+                sum += 1;
+            }
+        }
+        return sum;
+    }
+
+
+
 
 
     public String checkFor21(int total) {
@@ -48,7 +57,7 @@ public class Hand extends Deck {
         return result;
     }
 
-    public void dealerCheckFor21(int total) {
+    public int dealerCheckFor21(int total) {
         int sum = total;
         System.out.println(sum);
 
@@ -56,7 +65,7 @@ public class Hand extends Deck {
             System.out.println(handToPlay);
             handToPlay.add(drawFromDeck());
             System.out.println(handToPlay);
-            sum = addValuesOfCardsInHand();
+            sum = addValuesOfCardsInHandWithoutAceCards();
             System.out.println(sum);
         }
 
@@ -74,6 +83,8 @@ public class Hand extends Deck {
             System.out.println(handToPlay);
             System.out.println("Dealer busts.");
         }
+
+        return sum;
     }
 
     public void showDealerTopCard() {
@@ -95,8 +106,13 @@ public class Hand extends Deck {
     }
 
     public void declareWinner(int dealerTotal, int playerTotal) {
-        String result = (dealerTotal > playerTotal) ? "dealer wins" : "player wins ";
-        System.out.println(result);
+        if(dealerTotal > playerTotal && dealerTotal <= 21 || playerTotal > 21){
+            System.out.println("The dealer wins!");
+        } else if (dealerTotal < playerTotal && playerTotal <= 21 || dealerTotal > 21){
+            System.out.println("The player wins!");
+        } else {
+            System.out.println("It's a draw.");
+        }
     }
 }
 
