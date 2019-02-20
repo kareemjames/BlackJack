@@ -106,6 +106,8 @@ public class Game {
 
                            playerHand.clearHand();
                            dealerHand.clearHand();
+                           dealer.checkForEndOfDeck();
+
 
 
 
